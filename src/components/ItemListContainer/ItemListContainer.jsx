@@ -24,6 +24,12 @@ function ItemListContainer() {
           title="Producto 3"
           imgurl="https://http2.mlstatic.com/D_NQ_NP_695659-MLA46217963329_052021-O.webp"
         />
+        <Item
+          detail="Lorem ipsum"
+          price={4500}
+          title="Producto 4"
+          imgurl="https://http2.mlstatic.com/D_NQ_NP_649349-MLA44230033264_122020-O.webp"
+        />
       </FlexWrapper>
     </div>
   );
