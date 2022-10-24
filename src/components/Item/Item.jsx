@@ -1,6 +1,7 @@
 //1. Importamos el hook de Ciclo de Vida
 import React, { useState, useEffect } from "react";
-import Button from "../Button/Button";
+import Button from "@mui/material/Button";
+
 import "./item.css";
 
 function Item(props) {
@@ -12,13 +13,14 @@ function Item(props) {
 
   useEffect(() => {
     console.log("%cMontaje del componente", "color: lightblue");
-    return( ()=> { console.log("Componente desmontado")})
+    return () => {
+      console.log("Componente desmontado");
+    };
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     console.log("%cUpdate del componente", "color: lightgreen");
-  }, [isFavorite] )
-
+  }, [isFavorite, textFavorite]);
 
   function handleFavorite() {
     setIsFavorite(!isFavorite);
@@ -50,7 +52,9 @@ function Item(props) {
         <p>{props.detail}</p>
         <h4 className="priceTag">$ {props.price}</h4>
       </div>
-      <Button>Ver más!</Button>
+      <Button variant="outlined" color="error">
+        Ver más!
+      </Button>
     </div>
   );
 }
