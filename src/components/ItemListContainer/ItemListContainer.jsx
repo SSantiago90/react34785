@@ -1,35 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FlexWrapper from "../FlexWrapper/FlexWrapper";
-import Item from "../Item/Item";
+import ItemList from "./ItemList";
+import getItemsFromAPI from "../../mockService/mockService";
 
 function ItemListContainer() {
+  const [productsList, setProductsList] = useState([]);
+
+  useEffect(() => {
+    getItemsFromAPI().then((itemsDB) => {
+      console.log(itemsDB);
+      setProductsList(itemsDB);
+    });
+  }, []);
+
   return (
     <div>
       <FlexWrapper>
-        <Item
-          detail="Lorem ipsum"
-          price={2100}
-          title="Producto 1"
-          imgurl="/img/silla1.webp"
-        />
-        <Item
-          detail="Lorem ipsum"
-          price={3100}
-          title="Producto 2"
-          imgurl="https://http2.mlstatic.com/D_NQ_NP_797168-MLA44229654930_122020-O.webp"
-        />
-        <Item
-          detail="Lorem ipsum"
-          price={5000}
-          title="Producto 3"
-          imgurl="https://http2.mlstatic.com/D_NQ_NP_695659-MLA46217963329_052021-O.webp"
-        />
-        <Item
-          detail="Lorem ipsum"
-          price={4500}
-          title="Producto 4"
-          imgurl="https://http2.mlstatic.com/D_NQ_NP_649349-MLA44230033264_122020-O.webp"
-        />
+        <ItemList productsList={productsList}/>
       </FlexWrapper>
     </div>
   );
