@@ -16,7 +16,7 @@ function ItemListContainer() {
   return (
     <div>
       <FlexWrapper>
-        <ItemList productsList={productsList}/>
+        <ItemList productsList={productsList} />
       </FlexWrapper>
     </div>
   );
