@@ -1,17 +1,15 @@
-import React from 'react'
+import React from "react";
+import FlexWrapper from "../FlexWrapper/FlexWrapper";
 import Item from "../Item/Item";
 
 function ItemList(props) {
   return (
-    <div>
-    {props.productsList.map((product) => (
-      <Item
-        key={product.id}
-        product={product}
-      />    
-    ))}
-    </div>    
-  )
+    <FlexWrapper>
+      {props.productsList.map((product) => (
+        <Item key={product.id} product={product} />
+      ))}
+    </FlexWrapper>
+  );
 }
 
-export default ItemList
+export default ItemList;

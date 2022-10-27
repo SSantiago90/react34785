@@ -3,17 +3,15 @@ import React, { useState, useEffect } from "react";
 import Button from "../Button/Button";
 import "./item.css";
 
-function Item({product}) {
+function Item({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
- 
   function handleFavorite() {
     setIsFavorite(!isFavorite);
   }
 
   let classButtonFavorite =
     isFavorite === true ? "card-favicon favorite" : "card-favicon";
-
 
   return (
     <div className="card">

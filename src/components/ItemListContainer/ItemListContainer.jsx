@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import FlexWrapper from "../FlexWrapper/FlexWrapper";
 import ItemList from "./ItemList";
 import getItemsFromAPI from "../../mockService/mockService";
 
@@ -8,18 +7,11 @@ function ItemListContainer() {
 
   useEffect(() => {
     getItemsFromAPI().then((itemsDB) => {
-      console.log(itemsDB);
       setProductsList(itemsDB);
     });
   }, []);
 
-  return (
-    <div>
-      <FlexWrapper>
-        <ItemList productsList={productsList} />
-      </FlexWrapper>
-    </div>
-  );
+  return <ItemList productsList={productsList} />;
 }
 
 export default ItemListContainer;
