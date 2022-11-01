@@ -4,7 +4,7 @@ const itemsDB = [
     id: 1,
     title: "iPhone 9",
     price: 649,
-    stock: 54,
+    stock: 2,
     category: "smartphones",
     thumbnail: "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
     description: "An apple mobile which is nothing like apple",
@@ -290,14 +290,31 @@ export default function getItemsFromAPI() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(itemsDB);
-    }, 2000);
+    }, 500);
   });
 }
 
-export function getSingleItemFromAPI() {
+export function getSingleItemFromAPI(idParams) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let itemRequested = itemsDB.find((item) => item.id === Number(idParams));
+
+      if (itemRequested) {
+        resolve(itemRequested);
+      } else {
+        reject(new Error("El item no existe."));
+      }
+    }, 500);
+  });
+}
+
+export function getItemsFromAPIByCategory(categoryid) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(itemsDB[4]);
-    }, 2000);
+      let itemsRequested = itemsDB.filter(
+        (item) => item.category === categoryid
+      );
+      resolve(itemsRequested);
+    }, 500);
   });
 }
