@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-
         <Routes>
           <Route
             path="/"
@@ -23,6 +22,7 @@ function App() {
             element={<ItemListContainer greeting="Bienvenidos" />}
           />
           <Route path="/detalle/:id" element={<ItemDetailContainer />} />
+          <Route path="*" element={<h1>404: Ruta no encontrada</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
