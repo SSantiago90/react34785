@@ -297,7 +297,14 @@ export default function getItemsFromAPI() {
 export function getSingleItemFromAPI(idParams) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let itemRequested = itemsDB.find((item) => item.id === Number(idParams));
+      let itemRequested = itemsDB.find((item) => {
+        console.log("debug find - item.id:", item.id);
+        console.log("parametro id:", idParams);
+        console.log(item.id === parseInt(idParams));
+        return item.id === parseInt(idParams);
+      });
+
+      console.log("Item Encontrado: ", itemRequested);
 
       if (itemRequested) {
         resolve(itemRequested);
@@ -311,10 +318,13 @@ export function getSingleItemFromAPI(idParams) {
 export function getItemsFromAPIByCategory(categoryid) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      let itemsRequested = itemsDB.filter(
-        (item) => item.category === categoryid
-      );
-      resolve(itemsRequested);
+      let arrayItemsRequested = itemsDB.filter((item) => {
+        let matchearon = item.category === categoryid;
+
+        return matchearon;
+      });
+
+      resolve(arrayItemsRequested);
     }, 500);
   });
 }

@@ -3,11 +3,15 @@ import ItemList from "./ItemList";
 import getItemsFromAPI, {
   getItemsFromAPIByCategory,
 } from "../../mockService/mockService";
+
 import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
   const [productsList, setProductsList] = useState([]);
   const { categoryid } = useParams();
+
+  /* undefined -> false /
+  /* "string"  -> true */
 
   useEffect(() => {
     if (categoryid) {

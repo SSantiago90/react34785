@@ -10,7 +10,7 @@ function ItemDetail({ product }) {
 
   function onAddToCart(count) {
     Swal.fire({
-      title: "Item Agregado al Carrito",
+      title: `Agregadas ${count} unidades al Carrito`,
       text: "¿Deseas ir al carrito?",
       icon: "success",
       confirmButtonText: "Ir al carrito",

@@ -6,8 +6,7 @@ import ItemDetail from "./ItemDetail";
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
 
-  let params = useParams();
-  let id = params.id;
+  let id = useParams().id;
 
   useEffect(() => {
     getSingleItemFromAPI(id)
