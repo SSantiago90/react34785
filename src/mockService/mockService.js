@@ -6,7 +6,7 @@ const itemsDB = [
     price: 649,
     stock: 2,
     category: "smartphones",
-    thumbnail: "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+    thumbnail: "./img/silla1.webp",
     description: "An apple mobile which is nothing like apple",
   },
   {
@@ -298,9 +298,6 @@ export function getSingleItemFromAPI(idParams) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       let itemRequested = itemsDB.find((item) => {
-        console.log("debug find - item.id:", item.id);
-        console.log("parametro id:", idParams);
-        console.log(item.id === parseInt(idParams));
         return item.id === parseInt(idParams);
       });
 

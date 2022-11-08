@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "../ItemCount/ItemCount";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import cartContext from "../../storage/CartContext";
 
 function ItemDetail({ product }) {
   const [isInCart, setIsInCart] = useState(false);
 
-  const navigate = useNavigate();
+  const { addToCart } = useContext(cartContext);
 
   function onAddToCart(count) {
-    Swal.fire({
+    /* Swal.fire({
       title: `Agregadas ${count} unidades al Carrito`,
       text: "¿Deseas ir al carrito?",
       icon: "success",
       confirmButtonText: "Ir al carrito",
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
+    }).then((result) => {      
       if (result.isConfirmed) {
         navigate("/cart");
       }
-    });
+    }); */
+
+    const itemForCart = {
+      ...product,
+      count,
+    };
+
+    addToCart(itemForCart);
 
     setIsInCart(true);
   }

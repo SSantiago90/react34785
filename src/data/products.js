@@ -5,7 +5,7 @@ const products = [
     price: 649,
     stock: 54,
     category: "smartphones",
-    thumbnail: "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+    thumbnail: "img/silla1.webp",
     description: "An apple mobile which is nothing like apple",
   },
   {
