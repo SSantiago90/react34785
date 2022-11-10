@@ -4,11 +4,14 @@ import "./button.css";
 function Button(props) {
   const [colorState, setColorState] = useState({
     backgroundColor: props.color,
-    borderColor: "red",
   });
 
   return (
-    <button onClick={props.onClick} style={colorState} className="btn">
+    <button
+      onClick={props.onClick}
+      style={colorState}
+      className={`btn ${props.type || ""}`}
+    >
       {props.children}
     </button>
   );

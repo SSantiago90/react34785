@@ -5,10 +5,17 @@ import cartContext from "../../storage/CartContext";
 function CartWidget() {
   //7. Invocamos useContext(contexto) y recibimos el VALUE del provider
   const { totalItemsInCart } = useContext(cartContext);
+
   return (
     <div>
       <div>🛒</div>
-      <small>{totalItemsInCart()}</small>
+      {totalItemsInCart() > 0 ? (
+        <>
+          <span>{totalItemsInCart()}</span>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

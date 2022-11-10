@@ -22,16 +22,16 @@ export function CartContextProvider(props) {
 
       setCart(newCart);
     } else {
-      /*  else {
       const newCart = [...cart];
       newCart.push(itemData);
       setCart(newCart);
-    } */
+    }
+    /* else {
       setCart((newCart) => {
         newCart.push(itemData);
         return newCart;
       });
-    }
+    } */
   }
 
   function totalItemsInCart() {
@@ -42,15 +42,17 @@ export function CartContextProvider(props) {
     return total;
   }
 
-  function totalPriceInCart(){
-    
+  function totalPriceInCart() {
+    return 8500;
   }
 
-  function removeItem(itemId){
+  function removeItem(itemId) {
+    console.log("Removiendo el item", itemId);
     /*  cart.filter */
+
   }
 
-  function clear(){
+  function clear() {
     /*  */
   }
 
@@ -58,6 +60,8 @@ export function CartContextProvider(props) {
     cart,
     addToCart,
     totalItemsInCart,
+    removeItem,
+    totalPriceInCart
   };
 
   //3.Creamos el "value" para los componentes que consuman el context

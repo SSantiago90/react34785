@@ -8,3 +8,12 @@
   margin: 5px 15px;
   cursor: pointer;
 }
+
+.danger{
+  background-color: rgb(218, 78, 31);
+}
+
+.alert{
+  color: black;
+  background-color: rgb(236, 219, 41);
+}

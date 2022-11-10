@@ -27,7 +27,9 @@ function ItemCount({ stock, onAddToCart, text }) {
         </Button>
       </div>
       <div className="itemcount_btns">
-        <Button onClick={() => onAddToCart(count)}>{text}</Button>
+        <Button type="alert" onClick={() => onAddToCart(count)}>
+          {text}
+        </Button>
       </div>
     </div>
   );
