@@ -7,7 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from "./storage/CartContext";
 import CartView from "./components/CartView/CartView";
 
+import { getSingleItemFromAPI } from "./services/firebase";
+
 function App() {
+  getSingleItemFromAPI("nUw1VuT8dJMZXAuVR8CU");
+
   return (
     <div className="App">
       {/* 5. Importamos y renderizamos el Provider */}

@@ -61,7 +61,8 @@ export function CartContextProvider(props) {
     addToCart,
     totalItemsInCart,
     removeItem,
-    totalPriceInCart
+    totalPriceInCart,
+    clear
   };
 
   //3.Creamos el "value" para los componentes que consuman el context
