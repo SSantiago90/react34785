@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 
 import Loader from "../Loader/Loader";
+import FlexWrapper from "../FlexWrapper/FlexWrapper";
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
@@ -24,7 +25,12 @@ function ItemDetailContainer() {
   }, [id]);
 
   // early return - retorn anticipado
-  if (isLoading) return <Loader color="blue" />;
+  if (isLoading)
+    return (
+      <FlexWrapper>
+        <Loader color="blue" size={128} />
+      </FlexWrapper>
+    );
 
   return <ItemDetail product={product} />;
 }
