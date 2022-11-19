@@ -13,9 +13,9 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB3O1pBAvLvUsSSdpMnOtE-QlEVAIqZuJY",
+  apiKey: process.env.REACT_APP_APYKEY_FIREBASE,
   authDomain: "react34785.firebaseapp.com",
-  projectId: "react34785",
+  projectId: process.env.REACT_APP_PROJECT_ID_FIREBASE,
   storageBucket: "react34785.appspot.com",
   messagingSenderId: "30677509961",
   appId: "1:30677509961:web:3a16596bece32915989c98",
@@ -30,21 +30,21 @@ export function testDatabase() {
 }
 
 export async function getSingleItemFromAPI(id) {
-  // 1. Referenciamos el documento que queremos con su ID y su Colección
-  const docRef = doc(DB, "products", id);
+  try { 
+    const docRef = doc(DB, "products", id);
+    const docSnap = await getDoc(docRef);
 
-  // 2. Obtenemos el snapshot del documento con getDoc(referenciaDoc)
-  const docSnap = await getDoc(docRef);
-
-  // 3. Chequeamos si el snapshot existe con snapshot.exists()
-  if (docSnap.exists()) {
-    // 4. Retornamos los datos
-    return {
-      ...docSnap.data(),
-      id: docSnap.id,
-    };
-  } else {
-    console.error("El producto no existe");
+    if (docSnap.exists()) {
+      return {
+        ...docSnap.data(),
+        id: docSnap.id,
+      };
+    } else {
+      throw new Error("El producto no existe");
+    }
+  }
+  catch(error){
+    throw error;
   }
 }
 
@@ -78,6 +78,10 @@ export async function getItemsFromAPIByCategory(categoryId) {
 
   const productsSnap = await getDocs(myQuery);
 
+  const emptyArray = productsSnap.docs.length < 1;
+
+  if (emptyArray) throw new Error("Categoría sin resultados");
+
   const products = productsSnap.docs.map((docu) => {
     return {
       ...docu.data(),
@@ -100,10 +104,10 @@ export async function createBuyOrderFirestoreWithStock(buyOrderData) {
   const collectionOrdersRef = collection(DB, "buyorders");
   const batch = writeBatch(DB);
 
-  let arrayIds = buyOrderData.items.map((item) => {   
+  let arrayIds = buyOrderData.items.map((item) => {
     return item.id;
   });
-  
+
   const q = query(collectionProductsRef, where(documentId(), "in", arrayIds));
 
   let productsSnapshot = await getDocs(q);
@@ -115,13 +119,13 @@ export async function createBuyOrderFirestoreWithStock(buyOrderData) {
 
     batch.update(doc.ref, { stock: stockActualizado });
   });
-  
-  const docOrderRef = doc(collectionOrdersRef);  
-  batch.set(docOrderRef, buyOrderData );
+
+  const docOrderRef = doc(collectionOrdersRef);
+  batch.set(docOrderRef, buyOrderData);
 
   batch.commit();
 
-  return docOrderRef.id
+  return docOrderRef.id;
 }
 
 async function exportItemsToFirestore() {

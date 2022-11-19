@@ -8,13 +8,15 @@ function ItemList(props) {
 
   return (
     <FlexWrapper>
-      {emptyArray ? (
-        <Loader color="green" size={128} />
-      ) : (
+      {emptyArray ? 
+        props.feedbackMsg ? 
+          <span style={{ backgroundColor: "pink" }}>{props.feedbackMsg}</span>
+          :
+          <Loader color="green" size={128} />
+      : 
         props.productsList.map((product) => (
           <Item key={product.id} product={product} />
-        ))
-      )}
+        ))}
     </FlexWrapper>
   );
 }
