@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartContextProvider } from "./storage/CartContext";
 import CartView from "./components/CartView/CartView";
 
-function App() {  
+function App() {
   return (
     <div className="App">
       {/* 5. Importamos y renderizamos el Provider */}
@@ -28,7 +28,7 @@ function App() {
             />
 
             <Route path="*" element={<h1>404: Ruta no encontrada</h1>} />
-          </Routes>         
+          </Routes>
         </BrowserRouter>
       </CartContextProvider>
     </div>
