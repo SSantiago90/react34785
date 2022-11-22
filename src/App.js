@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       {/* 5. Importamos y renderizamos el Provider */}
+      <h1>Hola Netlify</h1>
       <CartContextProvider>
         <BrowserRouter>
           <NavBar />
